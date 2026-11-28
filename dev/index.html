@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MrSkrenh — портфолио разработчика</title>
+<style>
+:root{--bg:#f6f7fb;--card:#fff;--text:#161a23;--muted:#5d6577;--line:#e3e6ef;--accent:#6d4aff;--accent2:#00b4d8;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0d0f16;--card:#161a25;--text:#eef0f7;--muted:#9aa2b8;--line:#262c3c;--accent:#8f74ff;--accent2:#38c8e8;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0d0f16;--card:#161a25;--text:#eef0f7;--muted:#9aa2b8;--line:#262c3c;--accent:#8f74ff;--accent2:#38c8e8;color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.55}
+.wrap{max-width:1000px;margin:0 auto;padding:0 20px}
+header{padding:64px 0 36px}
+.badge{display:inline-block;font-size:13px;color:var(--muted);border:1px solid var(--line);border-radius:99px;padding:4px 12px;background:var(--card)}
+h1{font-size:clamp(34px,7vw,56px);line-height:1.1;margin:18px 0 10px;background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+.lead{color:var(--muted);font-size:18px;max-width:600px;margin:0 0 24px}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-block;padding:10px 18px;border-radius:10px;text-decoration:none;font-weight:600;font-size:15px;border:1px solid var(--line);color:var(--text);background:var(--card)}
+.btn.main{background:var(--accent);border-color:var(--accent);color:#fff}
+.stats{display:flex;gap:28px;flex-wrap:wrap;margin:34px 0 0}
+.stats b{display:block;font-size:26px}
+.stats span{color:var(--muted);font-size:14px}
+h2{font-size:24px;margin:40px 0 14px}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.chip{cursor:pointer;font:inherit;font-size:14px;padding:6px 14px;border-radius:99px;border:1px solid var(--line);background:var(--card);color:var(--text)}
+.chip.on{background:var(--accent);border-color:var(--accent);color:#fff}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px}
+.card{display:flex;flex-direction:column;gap:8px;padding:18px;border:1px solid var(--line);border-radius:14px;background:var(--card);text-decoration:none;color:inherit;transition:transform .15s,border-color .15s}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card h3{margin:0;font-size:17px;word-break:break-word}
+.card p{margin:0;color:var(--muted);font-size:14px;flex:1}
+.meta{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted)}
+.dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-right:6px}
+.fork{font-size:11px;border:1px solid var(--line);border-radius:6px;padding:1px 6px;margin-left:6px}
+footer{padding:40px 0 48px;color:var(--muted);font-size:14px;text-align:center}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+<span class="badge">👋 Привет, я разработчик</span>
+<h1>MrSkrenh</h1>
+<p class="lead">Делаю сайты, ботов и десктопные утилиты. Python, JavaScript, TypeScript, Java и HTML. Все мои проекты ниже.</p>
+<div class="btns">
+<a class="btn main" href="https://github.com/spotarmihail-eng" target="_blank" rel="noopener">GitHub-профиль</a>
+<a class="btn" href="#projects">Смотреть проекты</a>
+</div>
+<div class="stats" id="stats"></div>
+</header>
+<main>
+<h2 id="projects">Проекты</h2>
+<div class="filters" id="filters"></div>
+<div class="grid" id="grid"></div>
+</main>
+<footer>© MrSkrenh · <a href="https://github.com/spotarmihail-eng" target="_blank" rel="noopener" style="color:inherit">github.com/spotarmihail-eng</a></footer>
+</div>
+<script>
+var R=[
+["FreeSteamGame","Free Steam Game — платформа игрового сообщества и коллекционных предметов.","TypeScript","4 часа назад"],
+["glay-2026","GLAY 2026 — премия сообщества.","JavaScript","2 недели назад"],
+["Pristal-VPN","Бесплатный менеджер прокси для Windows 11.","Python","3 недели назад"],
+["Pristal-Pilot","Проект Pristal на Python.","Python","2 недели назад"],
+["ProgrecClient","Клиент на Java.","Java","17 авг"],
+["skrenhtv-site","Сайт SkrenhTV.","HTML","3 недели назад"],
+["vizitca-MrSKRENH","Сайт-визитка MrSKRENH.","HTML","неделю назад"],
+["pristal-site-new1","Сайт проекта Pristal, новая версия.","HTML","3 недели назад"],
+["pristal-site-new","Сайт проекта Pristal, предыдущая версия.","HTML","14 авг"],
+["pristal-site","Первая версия сайта Pristal.","HTML","14 авг"],
+["finan","Финансовый веб-проект.","HTML","2 недели назад"],
+["danfnaf12","Веб-проект на HTML.","HTML","38 минут назад"],
+["Repo-Minecraft","Репозиторий для Minecraft.","Другое","27 дней назад"],
+["-","Дружелюбный бот для сквада MrSkrenh (форк TitanBot).","JavaScript","28 июня",1]
+];
+var C={TypeScript:"#3178c6",JavaScript:"#f1e05a",Python:"#3572a5",Java:"#b07219",HTML:"#e34c26","Другое":"#8b8b8b"};
+var cur="Все",grid=document.getElementById("grid");
+function esc(s){return s.replace(/&/g,"&amp;").replace(/</g,"&lt;")}
+function draw(){
+grid.innerHTML=R.filter(function(r){return cur==="Все"||r[2]===cur}).map(function(r){
+return '<a class="card" target="_blank" rel="noopener" href="https://github.com/spotarmihail-eng/'+encodeURIComponent(r[0])+'"><h3>'+esc(r[0])+(r[4]?'<span class="fork">fork</span>':'')+'</h3><p>'+esc(r[1])+'</p><div class="meta"><span><i class="dot" style="background:'+C[r[2]]+'"></i>'+r[2]+'</span><span>'+r[3]+'</span></div></a>'}).join("");
+document.querySelectorAll(".chip").forEach(function(b){b.classList.toggle("on",b.dataset.l===cur)});
+}
+var langs=["Все"].concat(Object.keys(C).filter(function(l){return R.some(function(r){return r[2]===l})}));
+document.getElementById("filters").innerHTML=langs.map(function(l){return '<button class="chip" data-l="'+l+'">'+l+'</button>'}).join("");
+document.getElementById("filters").onclick=function(e){if(e.target.dataset.l){cur=e.target.dataset.l;draw()}};
+document.getElementById("stats").innerHTML='<div><b>'+R.length+'</b><span>проектов</span></div><div><b>'+(langs.length-1)+'</b><span>технологий</span></div><div><b>2026</b><span>в активной разработке</span></div>';
+draw();
+</script>
+</body>
+</html>
